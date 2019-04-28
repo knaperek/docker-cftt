@@ -35,7 +35,7 @@ services:
     expose:
       - "80"
   web2.example.com:
-    image: nginx
+    image: httpd
     expose:
       - "80"
   stunnel:
