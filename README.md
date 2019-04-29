@@ -15,7 +15,7 @@ This project provides a base Dockerfile to be simply inherited and plugged in to
 ## Solution
 We keep all the web services do their job and not bother them with any TLS configurations. Instead a single **stunnel** TLS proxy is launched and automatically configured based on origin TLS keys and certs supplied (during the build process) for each deployed service.
 
-All individual web services only need to **expose** their plain HTTP ports (80) which **are not mapped** to the host machine. Only the stunnel's HTTPS port (443) needs to be mapped (`-p443:443`) and thus made publicly accessible.
+All individual web services only need to **expose** their plaintext interfaces (port 80/http being the default) which **are not mapped** to the host machine. Only the stunnel's HTTPS port (443) needs to be mapped (`-p443:443`) and thus made publicly accessible.
 
 ## Requirements
 This is a base Docker image which makes use of the `ONBUILD` instructions, so you need to make your own `Dockerfile` which may be as simple as just defining the `FROM` instruction, providing the following conditions are met:
@@ -23,6 +23,7 @@ This is a base Docker image which makes use of the `ONBUILD` instructions, so yo
 * similarly, all service certificates should be placed in `certs/`
 * both keys and certs need to be in the `PEM` format
 * **IMPORTANT**: both key and cert files need to conform to this filename pattern: `<service-FQDN>.pem`, e.g. `example.com.pem`
+* **OPTIONAL**: if your origin server is listening on a port other than 80, use the following pattern for both key/cert filenames: `<service-FQDN>:<port>.pem`
 * Web service domains (FQDNs) need to resolve to their respective "internal" addresses (where the HTTP servers are running on port 80) when being resolved from inside the stunnel container. This can easily be achieved if you use the FQDN as a service identifier in your Compose file and Docker's built-in DNS server will do the rest.
 
 ## Example with Docker Compose
