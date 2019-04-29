@@ -23,7 +23,7 @@ This is a base Docker image which makes use of the `ONBUILD` instructions, so yo
 * similarly, all service certificates should be placed in `certs/`
 * both keys and certs need to be in the `PEM` format
 * **IMPORTANT**: both key and cert files need to conform to this filename pattern: `<service-FQDN>.pem`, e.g. `example.com.pem`
-* **OPTIONAL**: if your origin server is listening on a port other than 80, use the following pattern for both key/cert filenames: `<service-FQDN>:<port>.pem`
+* **OPTIONAL**: if your origin server is listening on a port other than 80, use the following pattern for both key/cert filenames: `<service-FQDN>@<port>.pem` (Note: `@` is used instead of `:` to support NTFS)
 * Web service domains (FQDNs) need to resolve to their respective "internal" addresses (where the HTTP servers are running on port 80) when being resolved from inside the stunnel container. This can easily be achieved if you use the FQDN as a service identifier in your Compose file and Docker's built-in DNS server will do the rest.
 
 ## Example with Docker Compose
