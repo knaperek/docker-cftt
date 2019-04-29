@@ -40,7 +40,7 @@ sni = master:$service_name"
 	echo "
 cert = $CERT_PATH/$pem_filename
 key = $service_key
-connect = $service_name:$origin_port
+connect = ${service_name}.local:$origin_port
 CAfile = /etc/ssl/certs/origin-pull-ca.pem
 verifyChain = yes
 TIMEOUTclose = 0
