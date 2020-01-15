@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-ARG ORIGIN_PULL_CA_SOURCE=https://support.cloudflare.com/hc/en-us/article_attachments/201243967/origin-pull-ca.pem
+ARG ORIGIN_PULL_CA_SOURCE=https://support.cloudflare.com/hc/en-us/article_attachments/360044928032/origin-pull-ca.pem
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
