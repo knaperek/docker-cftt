@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 ARG ORIGIN_PULL_CA_SOURCE=https://support.cloudflare.com/hc/en-us/article_attachments/360044928032/origin-pull-ca.pem
 
