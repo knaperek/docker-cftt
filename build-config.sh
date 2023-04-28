@@ -8,9 +8,9 @@ KEY_PATH=/etc/ssl/keys
 echo "; Config auto-generated during Docker image build
 foreground = yes
 log = append
-pid = /var/run/stunnel/stunnel.pid
-setuid = stunnel
-setgid = stunnel
+pid = /var/run/stunnel4/stunnel.pid
+setuid = stunnel4
+setgid = stunnel4
 "
 
 is_master=1

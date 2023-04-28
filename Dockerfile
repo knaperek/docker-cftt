@@ -5,10 +5,7 @@ ARG ORIGIN_PULL_CA_SOURCE=https://developers.cloudflare.com/ssl/static/authentic
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	   stunnel4 \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& adduser --system --no-create-home --quiet --group stunnel \
-	&& mkdir -p /var/run/stunnel \
-	&& chown stunnel:stunnel /var/run/stunnel
+	&& rm -rf /var/lib/apt/lists/*
 
 ADD $ORIGIN_PULL_CA_SOURCE /etc/ssl/certs/origin-pull-ca.pem
 
